@@ -1,0 +1,13 @@
+
+[
+    {
+        "char_name": "Mike", 
+        "expression": "neutral", 
+        "text" : "Your first text!"
+    },
+    {
+        "char_name": "Mike", 
+        "expression": "neutral", 
+        "text" : "Your second text!"
+    }
+]

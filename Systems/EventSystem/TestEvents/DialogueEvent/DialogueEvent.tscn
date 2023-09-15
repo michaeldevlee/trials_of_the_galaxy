@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Systems/EventSystem/Events/Event.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Systems/EventSystem/TestEvents/DialogueEvent/DialogueEvent.gd" type="Script" id=2]
+
+[node name="DialogueEvent" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+dialogue_object = null
+char_name = "Mike"
