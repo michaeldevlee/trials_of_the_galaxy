@@ -14,11 +14,13 @@ func apply_gravity(delta):
 	
 func get_user_movement_input(delta):
 	velocity.x = 0
+	print(is_on_floor())
 	if Input.is_action_pressed("left"):
 		velocity.x = -movement_speed * delta * speed_multiplier
 	if Input.is_action_pressed("right"):
 		velocity.x = movement_speed * delta * speed_multiplier
-	if Input.is_action_just_pressed("jump") && abs(velocity.y) <= 2:
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		print(is_on_floor())
 		velocity.y -= jump_speed * 50
 
 func _ready():
@@ -26,6 +28,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP)
 	apply_gravity(delta)
 	get_user_movement_input(delta)
