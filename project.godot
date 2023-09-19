@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "BossState",
+"class": "Attack_1TestBoss",
+"language": "GDScript",
+"path": "res://Core/Boss/TestBoss/TestBossAttack.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://Core/Boss/BaseBoss/Boss.gd"
+}, {
+"base": "State",
+"class": "BossState",
+"language": "GDScript",
+"path": "res://Core/Boss/BaseBoss/BossState.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Core/Player/Bullet.gd"
+}, {
 "base": "CanvasLayer",
 "class": "Dialogue",
 "language": "GDScript",
@@ -29,17 +49,51 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Systems/EventSystem/EventQueue/EventQueue.gd"
 }, {
+"base": "Node",
+"class": "HealthComponent",
+"language": "GDScript",
+"path": "res://Components/HealthComp.gd"
+}, {
+"base": "BossState",
+"class": "Idle_BossState",
+"language": "GDScript",
+"path": "res://Core/Boss/TestBoss/TestBossIdle.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Core/Player/Player.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://Core/Boss/StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://Core/Boss/StateMachine/StateMachine.gd"
+}, {
+"base": "Boss",
+"class": "TestBoss",
+"language": "GDScript",
+"path": "res://Core/Boss/TestBoss/TestBoss.gd"
 } ]
 _global_script_class_icons={
+"Attack_1TestBoss": "",
+"Boss": "",
+"BossState": "",
+"Bullet": "",
 "Dialogue": "",
 "DialogueEvent": "",
 "Event": "",
 "EventQueue": "",
-"Player": ""
+"HealthComponent": "",
+"Idle_BossState": "",
+"Player": "",
+"State": "",
+"StateMachine": "",
+"TestBoss": ""
 }
 
 [application]
@@ -52,6 +106,7 @@ config/icon="res://icon.png"
 
 DialogueManager="*res://Systems/DialogueSystem/DialogueManager/DialogueManager.tscn"
 EventManager="*res://Systems/EventSystem/EventManager/EventManager.tscn"
+Debug="*res://Debug/Debug.tscn"
 
 [display]
 
@@ -93,6 +148,26 @@ dash={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
  ]
 }
+lock_facing_direction={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":71,"unicode":0,"echo":false,"script":null)
+ ]
+}
+debug={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":96,"unicode":0,"echo":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Projectile"
 
 [physics]
 

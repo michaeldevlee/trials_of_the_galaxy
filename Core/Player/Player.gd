@@ -1,33 +1,102 @@
 extends KinematicBody2D
 class_name Player
 
-export var movement_speed : int = 200
-export var jump_speed : int = 5
+const MOVEMENT_SPEED_ORIGINAL = 60
+
+onready var cd_timer = get_node("Shoot_CD_Timer")
+onready var cd_dash_timer = get_node("Dash_CD_Timer")
+onready var dash_timer = get_node("DashTimer")
+
+export var movement_speed : int = 60
+export var jump_speed : int = 7
 export var speed_multiplier : int = 50
+export (String, "NORTH", "SOUTH", "EAST", "WEST") var shooting_direction = "EAST" 
 
 var velocity = Vector2()
 var gravity = 9.8
-
-
-func apply_gravity(delta):
-	velocity.y += gravity * delta * 100
-	
-func get_user_movement_input(delta):
-	velocity.x = 0
-	print(is_on_floor())
-	if Input.is_action_pressed("left"):
-		velocity.x = -movement_speed * delta * speed_multiplier
-	if Input.is_action_pressed("right"):
-		velocity.x = movement_speed * delta * speed_multiplier
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		print(is_on_floor())
-		velocity.y -= jump_speed * 50
+var bullet_ref = preload("res://Core/Player/Bullet.tscn")
+var is_lock_direction : bool = false
+var shoot_cool_down : float  = 0.5
+var can_shoot : bool = true
+var is_dashing : bool = false
+var can_dash : bool = true
 
 func _ready():
-	pass # Replace with function body.
+	cd_timer.connect("timeout", self, "reset_shoot")
+	cd_dash_timer.connect("timeout", self, "reset_dash")
+	dash_timer.connect("timeout", self, "end_dash")
 
+func apply_gravity(delta):
+	if !is_dashing:
+		velocity.y += gravity * delta * 100
+	
+func get_user_input(delta):
+	velocity.x = 0
+	if Input.is_action_pressed("left"):
+		update_shooting_direction("WEST")
+		velocity.x = -movement_speed * delta * speed_multiplier
+	if Input.is_action_pressed("right"):
+		update_shooting_direction("EAST")
+		velocity.x = movement_speed * delta * speed_multiplier
+	if Input.is_action_pressed("up"):
+		update_shooting_direction("NORTH")
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y -= jump_speed * 50
+	if Input.is_action_pressed("shoot") and can_shoot:
+		shoot()
+	
+	if Input.is_action_just_pressed("lock_facing_direction"):
+		is_lock_direction = !is_lock_direction
+	
+	if Input.is_action_just_pressed("dash"):
+		if can_dash and !is_dashing and abs(velocity.x) > 0:
+			dash()
+	
+	if Input.is_action_just_pressed("ui_down"):
+		shoot_cool_down -= 0.1
+		
+func update_shooting_direction(direction):
+	if is_lock_direction == true:
+		return
+	
+	shooting_direction = direction
+
+func start_cool_down():
+	cd_timer.wait_time = shoot_cool_down
+	cd_timer.start()
+	can_shoot = false
+
+func reset_dash():
+	can_dash = true
+
+func dash():
+	is_dashing = true
+	can_dash = false
+	dash_timer.wait_time = 0.2
+	dash_timer.start()
+	movement_speed *= 4
+	velocity.y = 0
+	
+func end_dash():
+	movement_speed = MOVEMENT_SPEED_ORIGINAL
+	is_dashing = false
+	cd_dash_timer.start()
+	
+func change_movement_speed(speed):
+	movement_speed = speed
+
+func reset_shoot():
+	can_shoot = true
+
+func shoot():
+	start_cool_down()
+	var bullet = bullet_ref.instance()
+	bullet.direction = shooting_direction
+	owner.add_child(bullet)
+	bullet.transform = self.global_transform
+ 
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	apply_gravity(delta)
-	get_user_movement_input(delta)
+	get_user_input(delta)
