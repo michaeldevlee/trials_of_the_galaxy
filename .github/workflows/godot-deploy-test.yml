@@ -1,0 +1,22 @@
+name: Build and Deploy
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install and Build
+        uses: addnab/docker-run-action@v3
+        with:
+            image: barichello/godot-ci:3.5.2
+            run: |
+                godot
+
+
+      # - name: Deploy 🚀
+      #   uses: mikelee53/github-pages-deploy-action@v4
+
+          # folder: build # The folder the action should deploy.
