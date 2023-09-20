@@ -6,6 +6,8 @@ const MOVEMENT_SPEED_ORIGINAL = 60
 onready var cd_timer = get_node("Shoot_CD_Timer")
 onready var cd_dash_timer = get_node("Dash_CD_Timer")
 onready var dash_timer = get_node("DashTimer")
+onready var anim_player = get_node("AnimationPlayer")
+onready var sprite = get_node("Sprite")
 
 export var movement_speed : int = 60
 export var jump_speed : int = 7
@@ -54,7 +56,18 @@ func get_user_input(delta):
 	
 	if Input.is_action_just_pressed("ui_down"):
 		shoot_cool_down -= 0.1
-		
+
+func apply_anims():
+	if velocity.x == 0 and is_on_floor():
+		anim_player.play("Idle")
+	elif abs(velocity.y) > 1 and !is_on_floor():
+		anim_player.play("Jump")
+	
+	if velocity.x > 0:
+		sprite.flip_h = false
+	if velocity.x < 0:
+		sprite.flip_h = true
+
 func update_shooting_direction(direction):
 	if is_lock_direction == true:
 		return
@@ -100,3 +113,4 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	apply_gravity(delta)
 	get_user_input(delta)
+	apply_anims()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Core/Player/test_bullet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/projectiles.png" type="Texture" id=1]
 [ext_resource path="res://Core/Player/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -17,6 +17,8 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 8, 8 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

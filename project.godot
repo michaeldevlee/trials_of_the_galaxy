@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "BossState",
 "class": "Attack_1TestBoss",
 "language": "GDScript",
-"path": "res://Core/Boss/TestBoss/TestBossAttack.gd"
+"path": "res://Core/Boss/EggmanBoss/TestBossAttack.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Boss",
@@ -57,7 +57,7 @@ _global_script_classes=[ {
 "base": "BossState",
 "class": "Idle_BossState",
 "language": "GDScript",
-"path": "res://Core/Boss/TestBoss/TestBossIdle.gd"
+"path": "res://Core/Boss/EggmanBoss/TestBossIdle.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -77,7 +77,7 @@ _global_script_classes=[ {
 "base": "Boss",
 "class": "TestBoss",
 "language": "GDScript",
-"path": "res://Core/Boss/TestBoss/TestBoss.gd"
+"path": "res://Core/Boss/EggmanBoss/TestBoss.gd"
 } ]
 _global_script_class_icons={
 "Attack_1TestBoss": "",
