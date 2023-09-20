@@ -68,6 +68,9 @@ func apply_anims():
 	if velocity.x < 0:
 		sprite.flip_h = true
 
+func take_damage():
+	pass
+
 func update_shooting_direction(direction):
 	if is_lock_direction == true:
 		return

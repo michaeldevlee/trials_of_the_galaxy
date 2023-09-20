@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Core/Boss/EggmanBoss/Idle_TestBoss.tres" type="Animation" id=1]
+[ext_resource path="res://Core/Boss/AeroBot/AeroBotIdle.tres" type="Animation" id=1]
 [ext_resource path="res://Core/Boss/StateMachine/StateMachine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Core/Boss/BaseBoss/Boss.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
@@ -15,7 +15,9 @@ resource_name = "Idle"
 length = 2.0
 loop = true
 
-[node name="Boss" type="KinematicBody2D"]
+[node name="Boss" type="KinematicBody2D" groups=["Boss"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]

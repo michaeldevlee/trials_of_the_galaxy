@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Position2D
+
+export var location : Vector2
+"
+
+[node name="PoundUpperLoc_1" type="Position2D"]
+script = SubResource( 1 )

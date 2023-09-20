@@ -10,9 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "BossState",
-"class": "Attack_1TestBoss",
+"class": "AeroBotPound",
 "language": "GDScript",
-"path": "res://Core/Boss/EggmanBoss/TestBossAttack.gd"
+"path": "res://Core/Boss/AeroBot/AeroBotAttack.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Boss",
@@ -57,7 +57,7 @@ _global_script_classes=[ {
 "base": "BossState",
 "class": "Idle_BossState",
 "language": "GDScript",
-"path": "res://Core/Boss/EggmanBoss/TestBossIdle.gd"
+"path": "res://Core/Boss/AeroBot/AeroBotIdle.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -77,10 +77,10 @@ _global_script_classes=[ {
 "base": "Boss",
 "class": "TestBoss",
 "language": "GDScript",
-"path": "res://Core/Boss/EggmanBoss/TestBoss.gd"
+"path": "res://Core/Boss/AeroBot/AeroBot.gd"
 } ]
 _global_script_class_icons={
-"Attack_1TestBoss": "",
+"AeroBotPound": "",
 "Boss": "",
 "BossState": "",
 "Bullet": "",
@@ -168,6 +168,7 @@ up={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Projectile"
+2d_physics/layer_3="Tile"
 
 [physics]
 

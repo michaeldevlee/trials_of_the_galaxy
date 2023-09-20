@@ -4,8 +4,9 @@ class_name Boss
 onready var anim_player = $AnimationPlayer
 onready var state_manager = $StateMachine
 onready var health = $HealthComponent
+onready var collision_shape = $CollisionShape2D
 
-var velocity = Vector2.ZERO
+var velocity : Vector2 = Vector2.ZERO
 
 func _ready():
 	health.connect("health_depleted", self, "init_death")
@@ -22,6 +23,11 @@ func handle_collisions():
 		if body is TileMap:
 			print("hit a collision")
 
+func disable_collision():
+	collision_shape.disabled = true
+
+func enable_collision():
+	collision_shape.disabled = false
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity)
