@@ -1,7 +1,7 @@
 extends BossState
 class_name AerobotFromIdle
 
-var attack_states =["Pound"]
+var attack_states =["Pound", "Barrage"]
 var rng = RandomNumberGenerator.new()
 
 func _ready():

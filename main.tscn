@@ -17,7 +17,7 @@ tile_data = PoolIntArray( 65535, 0, 0, 10, 0, 0, 131071, 0, 0, 65546, 0, 0, 1966
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 8, 72 )
 
-[node name="TestBoss" parent="." instance=ExtResource( 4 )]
+[node name="AeroBot" parent="." instance=ExtResource( 4 )]
 position = Vector2( 72, 104 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
