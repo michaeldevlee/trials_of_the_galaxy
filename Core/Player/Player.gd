@@ -6,8 +6,12 @@ const MOVEMENT_SPEED_ORIGINAL = 60
 onready var cd_timer = get_node("Shoot_CD_Timer")
 onready var cd_dash_timer = get_node("Dash_CD_Timer")
 onready var dash_timer = get_node("DashTimer")
+onready var invincibility_timer = get_node("InvincibilityTimer")
 onready var anim_player = get_node("AnimationPlayer")
+onready var anim_player2 = get_node("AnimationPlayer2")
 onready var sprite = get_node("Sprite")
+onready var health_comp = get_node("HealthComponent")
+onready var DEBUG = get_node("DEBUG")
 
 export var movement_speed : int = 60
 export var jump_speed : int = 7
@@ -22,11 +26,15 @@ var shoot_cool_down : float  = 0.5
 var can_shoot : bool = true
 var is_dashing : bool = false
 var can_dash : bool = true
+var is_invincible : bool = false
+var invincibility_time : int = 2
 
 func _ready():
+	health_comp.connect("health_depleted", self, "handle_death")
 	cd_timer.connect("timeout", self, "reset_shoot")
 	cd_dash_timer.connect("timeout", self, "reset_dash")
 	dash_timer.connect("timeout", self, "end_dash")
+	invincibility_timer.connect("timeout", self, "end_invincibility")
 
 func apply_gravity(delta):
 	if !is_dashing:
@@ -68,8 +76,18 @@ func apply_anims():
 	if velocity.x < 0:
 		sprite.flip_h = true
 
-func take_damage():
-	pass
+func take_damage(amount : int):
+	if !is_invincible:
+		anim_player2.play("Hurt")
+		invincibility_timer.start()
+		is_invincible = true
+		health_comp.update_health(amount)
+		DEBUG.set_health_text(str(health_comp.health_points))
+
+func end_invincibility():
+	is_invincible = false
+	anim_player2.stop()
+	sprite.visible = true
 
 func update_shooting_direction(direction):
 	if is_lock_direction == true:
@@ -110,7 +128,9 @@ func shoot():
 	bullet.direction = shooting_direction
 	owner.add_child(bullet)
 	bullet.transform = self.global_transform
- 
+
+func handle_death():
+	queue_free()
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)

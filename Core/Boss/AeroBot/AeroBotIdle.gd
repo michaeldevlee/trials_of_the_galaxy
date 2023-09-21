@@ -1,15 +1,30 @@
 extends BossState
 class_name Idle_BossState
 
-func enter(_msg := {}):
-	var tween = create_tween()
-	boss.velocity = Vector2.ZERO
-	tween.tween_property(boss, "global_position", boss.global_position + Vector2(0, -160), 1)
+onready var timer = get_node("Timer")
 
-func update(delta) -> void:
-	if Input.is_action_just_pressed("ui_down"):
-		state_machine.transition_to("Pound")
+export var wait_time : int = 2
+
+var ORIGINAL_POSITION : Vector2 = Vector2(160-24, 144/2)
+
+func _ready():
+	timer.connect("timeout", self, "init_transition")
+
+func enter(_msg := {}):
+	set_process(true)
+	reset_position()
+
+func exit():
+	set_process(false)	
+
+func init_transition():
+	state_machine.transition_to("FromIdle")
 
 func reset_position() -> void:
-	pass
+	boss.velocity = Vector2.ZERO
+	timer.wait_time = wait_time
+	
+	var tween = create_tween()
+	tween.tween_property(boss, "position",ORIGINAL_POSITION, 1)
+	tween.tween_callback(timer, "start")
 	

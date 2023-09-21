@@ -10,9 +10,19 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "BossState",
+"class": "AeroBotBarrage",
+"language": "GDScript",
+"path": "res://Core/Boss/AeroBot/Barrage.gd"
+}, {
+"base": "BossState",
 "class": "AeroBotPound",
 "language": "GDScript",
 "path": "res://Core/Boss/AeroBot/AeroBotAttack.gd"
+}, {
+"base": "BossState",
+"class": "AerobotFromIdle",
+"language": "GDScript",
+"path": "res://Core/Boss/AeroBot/FromIdle.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Boss",
@@ -59,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Core/Boss/AeroBot/AeroBotIdle.gd"
 }, {
+"base": "Node",
+"class": "InvincibilityComp",
+"language": "GDScript",
+"path": "res://Components/InvincibilityComp.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -80,7 +95,9 @@ _global_script_classes=[ {
 "path": "res://Core/Boss/AeroBot/AeroBot.gd"
 } ]
 _global_script_class_icons={
+"AeroBotBarrage": "",
 "AeroBotPound": "",
+"AerobotFromIdle": "",
 "Boss": "",
 "BossState": "",
 "Bullet": "",
@@ -90,6 +107,7 @@ _global_script_class_icons={
 "EventQueue": "",
 "HealthComponent": "",
 "Idle_BossState": "",
+"InvincibilityComp": "",
 "Player": "",
 "State": "",
 "StateMachine": "",

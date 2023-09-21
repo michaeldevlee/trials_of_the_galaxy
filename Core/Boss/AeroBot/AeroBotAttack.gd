@@ -25,6 +25,9 @@ func move(direction : Vector2):
 	boss.velocity.move_toward(direction, 1)
 
 func init_scan():
+	if count >= max_count:
+		state_machine.transition_to("Idle")
+		return
 	var tween = create_tween()
 	tween.tween_property(boss, "global_position", Vector2(boss.global_position.x, 24), 0.5)
 	tween.tween_property(boss.ray_cast, "enabled" , true, 0)
@@ -49,15 +52,15 @@ func detect_player_collision():
 	if boss.get_last_slide_collision():
 		var collider = boss.get_last_slide_collision().collider
 		if collider is Player:
-			collider.take_damage()
+			collider.take_damage(10)
 			state_machine.transition_to("Idle")
-			print('transition')
 
 func pound(y_pos : int):
 	var tween = create_tween()
 	tween.tween_property(boss, "global_position:y", y_pos, 0.5)
 	tween.tween_callback(pound_timer, "start")
 	pound_tween = tween
+	count += 1
 
 func scan_for_player():
 	var ray_cast : RayCast2D = boss.ray_cast
@@ -77,6 +80,7 @@ func exit():
 		pound_tween.stop()
 	scan_tween.stop()
 	boss.ray_cast.enabled = false
+	count = 0
 
 func _process(delta):
 	scan_for_player()
