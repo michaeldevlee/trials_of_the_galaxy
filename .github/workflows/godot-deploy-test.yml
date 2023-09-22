@@ -4,7 +4,6 @@ on: push
 env:
   GODOT_VERSION: 3.5.2
   EXPORT_NAME: trials-of-the-galaxy
-  PROJECT_PATH: test-project
 
 jobs:
   web-export:
@@ -19,12 +18,11 @@ jobs:
           lfs: true
       - name: Setup
         run: |
-        mkdir -v -p ~/.local/share/godot/templates
-        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
       - name: web-build
         run: |
           mkdir -v -p build/web
-          cd $PROJECT_PATH
           godot -v --export "HTML5" ../build/web/$EXPORT_NAME.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
