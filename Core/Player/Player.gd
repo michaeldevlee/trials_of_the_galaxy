@@ -62,8 +62,6 @@ func get_user_input(delta):
 		if can_dash and !is_dashing and abs(velocity.x) > 0:
 			dash()
 	
-	if Input.is_action_just_pressed("ui_down"):
-		shoot_cool_down -= 0.1
 
 func apply_anims():
 	if velocity.x == 0 and is_on_floor():

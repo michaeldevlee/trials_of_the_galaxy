@@ -1,22 +1,33 @@
-# name: Build and Deploy
-# on: [push]
+name: "godot-ci export"
+on: push
 
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
+env:
+  GODOT_VERSION: 3.5.2
+  EXPORT_NAME: trials-of-the-galaxy
+  PROJECT_PATH: test-project
 
-#       - name: Install and Build
-#         uses: addnab/docker-run-action@v3
-#         with:
-#             image: barichello/godot-ci:3.5.2
-#             run: |
-#                 godot
-
-
-      # - name: Deploy 🚀
-      #   uses: mikelee53/github-pages-deploy-action@v4
-
-          # folder: build # The folder the action should deploy.
+jobs:
+  web-export:
+    name: web-export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:3.5.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+        mkdir -v -p ~/.local/share/godot/templates
+        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: web-build
+        run: |
+          mkdir -v -p build/web
+          cd $PROJECT_PATH
+          godot -v --export "HTML5" ../build/web/$EXPORT_NAME.html
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: web
+          path: build/web

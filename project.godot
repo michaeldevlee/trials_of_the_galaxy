@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Core/Boss/AeroBot/Barrage.gd"
 }, {
 "base": "BossState",
+"class": "AeroBotMegaBeam",
+"language": "GDScript",
+"path": "res://Core/Boss/AeroBot/Mega Beam.gd"
+}, {
+"base": "BossState",
 "class": "AeroBotPound",
 "language": "GDScript",
 "path": "res://Core/Boss/AeroBot/AeroBotAttack.gd"
@@ -101,6 +106,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AeroBotBarrage": "",
+"AeroBotMegaBeam": "",
 "AeroBotPound": "",
 "AerobotFromIdle": "",
 "Boss": "",
@@ -123,7 +129,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Trials of the Galaxy"
-run/main_scene="res://main.tscn"
+run/main_scene="res://UI/StartMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -131,6 +137,8 @@ config/icon="res://icon.png"
 DialogueManager="*res://Systems/DialogueSystem/DialogueManager/DialogueManager.tscn"
 EventManager="*res://Systems/EventSystem/EventManager/EventManager.tscn"
 Debug="*res://Debug/Debug.tscn"
+SceneTransitionManager="*res://Systems/EventSystem/TestEvents/SceneTransitionEvent/SceneTransitionManager.tscn"
+EventBus="*res://Systems/EventSystem/EventBus.gd"
 
 [display]
 
@@ -185,6 +193,12 @@ debug={
 up={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

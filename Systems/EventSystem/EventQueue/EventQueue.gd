@@ -3,9 +3,6 @@ class_name EventQueue
 
 var index = 0
 
-func _ready():
-	start_event()
-
 func start_event():
 	if index < get_children().size():
 		var curr_event = get_children()[index]
@@ -15,6 +12,7 @@ func start_event():
 		index += 1
 	else:
 		print('last event ended')
+		EventBus.emit_signal("started_game")
 
 func add_event(event):
 	var event_instance = event.instance()

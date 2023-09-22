@@ -1,57 +1,6 @@
 {
-    "BOB": [
-        {
-            "1A": [
-                {
-                    "comment": "first message in branch 1",
-                    "expression": "neutral",
-                    "text": "Your first text!",
-                    "underlined": [
-                        "first"
-                    ]
-                },
-                {
-                    "comment": "second message in branch 1",
-                    "expression": "neutral",
-                    "text": "Your second text!",
-                    "underlined": [
-                        "second"
-                    ]
-                },
-                {
-                    "comment": "first branching statement in  branch 1",
-                    "expression": "neutral",
-                    "text": "Which branch would you like to travel to?",
-                    "pivot": {
-                        "Choice_1": "2A",
-                        "Choice_2": "1B"
-                    }
-                }
-            ],
-            "1B": [
-                {
-                    "comment": "first message in branch 1",
-                    "expression": "neutral",
-                    "text": "Now you're on the same branch but with different text!",
-                    "underlined": [
-                        "same",
-                        "different"
-                    ],
-                    "important": [
-                        "same"
-                    ]
-                }
-            ],
-            "2A": [
-                {
-                    "comment": "first message in branch 2",
-                    "expression": "neutral",
-                    "text": "Your first text in the new branch 2!"
-                }
-            ]
-        }
-    ],
-    "MIKE": [
+
+    "Hello": [
         {
             "1A": [
                 {

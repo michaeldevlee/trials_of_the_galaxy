@@ -37,4 +37,5 @@ func process_hit(amount : int):
 		DEBUG.set_health_text(str(health.health_points))
 
 func init_death():
+	EventBus.emit_signal("boss_died")
 	queue_free()

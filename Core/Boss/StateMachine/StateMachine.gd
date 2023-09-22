@@ -11,7 +11,8 @@ func _ready() -> void:
 	yield(owner, "ready")
 	for child in get_children():
 		child.state_machine = self
-	state.enter()
+	if state:
+		state.enter()
 
 
 func _unhandled_input(event: InputEvent) -> void:
