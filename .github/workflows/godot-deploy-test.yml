@@ -23,7 +23,7 @@ jobs:
       - name: web-build
         run: |
           mkdir -v -p build/web
-          godot -v --export "HTML5" ../build/web/trials-of-the-galaxy.html 
+          godot -v --export "HTML5" ../build/web/$EXPORT_NAME.html 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
