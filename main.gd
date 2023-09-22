@@ -8,6 +8,7 @@ onready var button = $Credits/ColorRect2/Button
 
 func _ready():
 	EventBus.connect("boss_died", self, "start_credits")
+	EventBus.connect("player_died", self, "start_credits")
 
 func start_credits():
 	var player = get_tree().get_nodes_in_group("Player")[0].set_physics_process(false)

@@ -128,6 +128,7 @@ func shoot():
 	bullet.transform = self.global_transform
 
 func handle_death():
+	EventBus.emit_signal("player_died")
 	queue_free()
 
 func _physics_process(delta):
