@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bossHit (1).ogg-a77bb1c8a7f57dd5cc9cb1a5f12147aa.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/bossHit (1).ogg"
+dest_files=[ "res://.import/bossHit (1).ogg-a77bb1c8a7f57dd5cc9cb1a5f12147aa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -38,7 +38,6 @@ func init():
 	tween.tween_callback(boss.anim_player, "play", ["ChargeBeam"])
 	tween.tween_property(self, "aim_active", false, 2)
 	tween.tween_callback(self, "move_beam_towards_player")
-	
 
 func shoot_beam():
 	stop_beam()
@@ -72,6 +71,7 @@ func move_beam_towards_player():
 	var beam_target_angle = set_target_angle()
 	
 	beam.visible = true
+	$MegaBeamSFX.play()
 	beam.rotation_degrees = beam_shoot_angle
 	beam_active = true
 	set_target_angle()

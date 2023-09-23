@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/blipSelect.ogg-1c50bcda7db792c4f11843ec22372eab.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/blipSelect.ogg"
+dest_files=[ "res://.import/blipSelect.ogg-1c50bcda7db792c4f11843ec22372eab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

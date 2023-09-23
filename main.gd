@@ -11,6 +11,7 @@ func _ready():
 	EventBus.connect("player_died", self, "start_credits")
 
 func start_credits():
+	$DeathSFX.play()
 	var player = get_tree().get_nodes_in_group("Player")[0].set_physics_process(false)
 	var tween = create_tween()
 	tween.tween_interval(1)
