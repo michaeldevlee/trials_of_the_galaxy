@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bossRocket.ogg-47f11230d3f901b8a3ae2e9f802ba4cc.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/bossRocket.ogg"
+dest_files=[ "res://.import/bossRocket.ogg-47f11230d3f901b8a3ae2e9f802ba4cc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

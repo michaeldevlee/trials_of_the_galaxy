@@ -37,11 +37,13 @@ func _physics_process(delta):
 	
 func process_hit(amount : int):
 	if !invicibility_frames.active:
+		$HurtSFX.play()
 		health.update_health(amount)
 		invicibility_frames.init_invincibility_frames()
 		DEBUG.set_health_text(str(health.health_points))
 
 func init_death():
+	$DeathSFX.play()
 	EventBus.emit_signal("boss_died")
 	queue_free()
 

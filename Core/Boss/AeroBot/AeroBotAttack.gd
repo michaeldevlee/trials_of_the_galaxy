@@ -59,6 +59,7 @@ func pound(y_pos : int):
 	var tween = create_tween()
 	tween.tween_property(boss, "global_position:y", y_pos, 0.5)
 	tween.tween_callback(pound_timer, "start")
+	$PoundSFX.play()
 	pound_tween = tween
 	count += 1
 

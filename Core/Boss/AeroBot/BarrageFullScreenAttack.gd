@@ -57,15 +57,18 @@ func start_rocket_launch():
 		tween.tween_interval(0.2)
 		tween.tween_callback(rocket.animation_player, "stop")	
 		tween.tween_property(rocket, "position", rocket.position + Vector2(-200, 0), 1)
-		
+		$BossRocket.play()
 		if all_rockets.size() == 0:
 			tween.connect("finished", self, "restart_rocket_launch")
+			$BossRocket.stop()
 			count += 1
 			
 func restart_rocket_launch():
 	if count <= max_count:
 		rocket_tween.stop()
+		$BossRocket.stop()
 		init()
 	else:
+		$BossRocket.stop()
 		emit_signal("attack_ended")
 

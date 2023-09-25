@@ -51,8 +51,10 @@ func get_user_input(delta):
 	if Input.is_action_pressed("up"):
 		update_shooting_direction("NORTH")
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$JumpSFX.play()
 		velocity.y -= jump_speed * 50
 	if Input.is_action_pressed("shoot") and can_shoot:
+		$ShootSFX.play()
 		shoot()
 	
 	if Input.is_action_just_pressed("lock_facing_direction"):
@@ -60,6 +62,7 @@ func get_user_input(delta):
 	
 	if Input.is_action_just_pressed("dash"):
 		if can_dash and !is_dashing and abs(velocity.x) > 0:
+			$DashSFX.play()
 			dash()
 	
 
@@ -76,6 +79,7 @@ func apply_anims():
 
 func take_damage(amount : int):
 	if !is_invincible:
+		$HurtSFX.play()
 		anim_player2.play("Hurt")
 		invincibility_timer.start()
 		is_invincible = true

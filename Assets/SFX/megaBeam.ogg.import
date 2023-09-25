@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/megaBeam.ogg-b4d72baf8be1357bcec4fd9914dac682.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/megaBeam.ogg"
+dest_files=[ "res://.import/megaBeam.ogg-b4d72baf8be1357bcec4fd9914dac682.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

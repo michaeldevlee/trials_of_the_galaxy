@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Core/Boss/AeroBot/BarrageFullScreenAttack.gd" type="Script" id=1]
 [ext_resource path="res://Core/Boss/AeroBot/Rocket.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/SFX/bossRocket.ogg" type="AudioStream" id=3]
 
 [node name="FullScreenAttack" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,3 +19,6 @@ wait_time = 0.5
 [node name="Rocket3" parent="Rockets" instance=ExtResource( 2 )]
 
 [node name="Rocket4" parent="Rockets" instance=ExtResource( 2 )]
+
+[node name="BossRocket" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
