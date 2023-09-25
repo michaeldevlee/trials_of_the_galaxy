@@ -7,7 +7,7 @@ func enter(msg:={}):
 	var tween = create_tween()
 	tween.tween_property(boss, "global_position:x", boss.global_position.x + 160, 1)
 	tween.tween_callback(self, "init_attack")
-	
+	boss.anim_player.play("RocketBarrage")
 
 func exit():
 	pass

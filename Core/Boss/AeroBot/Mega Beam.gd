@@ -16,6 +16,7 @@ func _ready():
 
 func enter(_msg := {}):
 	set_physics_process(true)
+	boss.anim_player.play("ChargeBeam")
 	init()
 
 func exit():	

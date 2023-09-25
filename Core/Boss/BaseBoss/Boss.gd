@@ -6,7 +6,6 @@ onready var state_manager = $StateMachine
 onready var health = $HealthComponent
 onready var collision_shape = $CollisionShape2D
 onready var invicibility_frames = $InvincibilityFrames
-onready var DEBUG = $DEBUG
 
 var velocity : Vector2 = Vector2.ZERO
 
@@ -40,7 +39,6 @@ func process_hit(amount : int):
 		$HurtSFX.play()
 		health.update_health(amount)
 		invicibility_frames.init_invincibility_frames()
-		DEBUG.set_health_text(str(health.health_points))
 
 func init_death():
 	$DeathSFX.play()

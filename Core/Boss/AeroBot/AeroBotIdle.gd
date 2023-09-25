@@ -13,6 +13,7 @@ func _ready():
 func enter(_msg := {}):
 	set_process(true)
 	reset_position()
+	boss.anim_player.play("Idle")
 
 func exit():
 	set_process(false)	

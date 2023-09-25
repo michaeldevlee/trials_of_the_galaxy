@@ -19,6 +19,17 @@ margin_right = 160.0
 margin_bottom = 144.0
 theme = SubResource( 2 )
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_top = 132.0
+margin_right = 44.0
+margin_bottom = 142.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+margin_left = 107.0
+margin_top = 132.0
+margin_right = 159.0
+margin_bottom = 142.0
+
 [node name="Layer1" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,12 +79,14 @@ alignment = 2
 [node name="Label" type="Label" parent="Control/Layer3/VBoxContainer3/VBoxContainer"]
 margin_right = 22.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "HP:"
 
 [node name="PlayerHP" type="Label" parent="Control/Layer3/VBoxContainer3/VBoxContainer"]
 margin_left = 26.0
 margin_right = 44.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "50"
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="Control/Layer3"]
@@ -93,10 +106,12 @@ alignment = 2
 margin_left = 59.0
 margin_right = 81.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "HP:"
 
 [node name="BossHP" type="Label" parent="Control/Layer3/VBoxContainer4/VBoxContainer"]
 margin_left = 85.0
 margin_right = 112.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "300"

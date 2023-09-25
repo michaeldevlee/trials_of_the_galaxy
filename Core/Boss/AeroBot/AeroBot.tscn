@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Core/Boss/AeroBot/AeroBotIdle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Core/Boss/AeroBot/AeroBotPound.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Core/Boss/BaseBoss/Boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Core/Boss/AeroBot/AeroBotIdle.tres" type="Animation" id=4]
 [ext_resource path="res://Core/Boss/AeroBot/AeroBot.gd" type="Script" id=5]
-[ext_resource path="res://Core/Boss/AeroBot/Test_Boss.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/dr_eggman-Sheet.png" type="Texture" id=6]
 [ext_resource path="res://Core/Boss/AeroBot/FromIdle.gd" type="Script" id=7]
 [ext_resource path="res://Core/Boss/AeroBot/Barrage.gd" type="Script" id=8]
 [ext_resource path="res://Core/Boss/AeroBot/Mega Beam.gd" type="Script" id=9]
@@ -33,6 +33,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "FromIdleTrans"
@@ -49,6 +61,52 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 2, 0 ), Vector2( -2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Pound"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Pound_Init"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "RocketBarrage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -91,12 +149,15 @@ collision_mask = 3
 script = ExtResource( 5 )
 
 [node name="HealthComponent" parent="." index="0"]
-health_points = 300
+health_points = 600
 
 [node name="Sprite" parent="." index="2"]
 rotation = 0.000662563
 scale = Vector2( 1.00307, 1 )
 texture = ExtResource( 6 )
+hframes = 4
+vframes = 4
+frame = 12
 
 [node name="StateMachine" parent="." index="3"]
 initial_state = NodePath("Pause")
@@ -129,6 +190,9 @@ anims/Attack_1 = SubResource( 1 )
 anims/ChargeBeam = SubResource( 3 )
 anims/FromIdleTrans = SubResource( 2 )
 anims/Idle = ExtResource( 4 )
+anims/Pound = SubResource( 9 )
+anims/Pound_Init = SubResource( 8 )
+anims/RocketBarrage = SubResource( 10 )
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="5"]
 cast_to = Vector2( 0, 136 )

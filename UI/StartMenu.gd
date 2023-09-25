@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var button = $Control/MarginContainer/VBoxContainer/HBoxContainer2/Button
+onready var button = $Control/TextureRect/Button
 
 func _on_Button_button_up():
 	SceneTransitionManager.start_event_queue()

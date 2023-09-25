@@ -18,13 +18,14 @@ func _ready():
 func enter(_msg := {}):
 	set_process(true)
 	boss.velocity = Vector2.ZERO
-	boss.anim_player.play("Attack_1")
+	boss.anim_player.play("Pound_Init")
 	init_scan()
 
 func move(direction : Vector2):
 	boss.velocity.move_toward(direction, 1)
 
 func init_scan():
+	boss.anim_player.play("Pound_Init")	
 	if count >= max_count:
 		state_machine.transition_to("Idle")
 		return
@@ -56,6 +57,7 @@ func detect_player_collision():
 			state_machine.transition_to("Idle")
 
 func pound(y_pos : int):
+	boss.anim_player.play("Pound")	
 	var tween = create_tween()
 	tween.tween_property(boss, "global_position:y", y_pos, 0.5)
 	tween.tween_callback(pound_timer, "start")

@@ -11,7 +11,6 @@ onready var anim_player = get_node("AnimationPlayer")
 onready var anim_player2 = get_node("AnimationPlayer2")
 onready var sprite = get_node("Sprite")
 onready var health_comp = get_node("HealthComponent")
-onready var DEBUG = get_node("DEBUG")
 
 export var movement_speed : int = 60
 export var jump_speed : int = 7
@@ -84,7 +83,6 @@ func take_damage(amount : int):
 		invincibility_timer.start()
 		is_invincible = true
 		health_comp.update_health(amount)
-		DEBUG.set_health_text(str(health_comp.health_points))
 		GameState.start_player_notification("- " + str(GameState.score/2))		
 		EventBus.emit_signal("health_changed", self , health_comp.health_points)
 		GameState.score /= 2
