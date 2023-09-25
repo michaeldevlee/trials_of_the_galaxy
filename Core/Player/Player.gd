@@ -81,6 +81,10 @@ func take_damage(amount : int):
 		is_invincible = true
 		health_comp.update_health(amount)
 		DEBUG.set_health_text(str(health_comp.health_points))
+		GameState.start_player_notification("- " + str(GameState.score/2))		
+		EventBus.emit_signal("health_changed", self , health_comp.health_points)
+		GameState.score /= 2
+		EventBus.emit_signal("boss_hurt")
 
 func end_invincibility():
 	is_invincible = false

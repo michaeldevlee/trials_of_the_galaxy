@@ -12,6 +12,7 @@ var velocity : Vector2 = Vector2.ZERO
 
 func _ready():
 	health.connect("health_depleted", self, "init_death")
+	EventBus.connect("player_died", self, "clean_up")
 
 func handle_collisions():
 	for index in get_slide_count():
@@ -21,9 +22,13 @@ func handle_collisions():
 		if body is Bullet:
 			process_hit(10)
 			body.queue_free()
+			GameState.score += 50
+			GameState.start_player_notification("+ 50")
+			EventBus.emit_signal("boss_hurt")
+			EventBus.emit_signal("health_changed", self , health.health_points)
 		
 		if body is TileMap:
-			print("hit a collision")
+			pass
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity)
@@ -39,3 +44,8 @@ func process_hit(amount : int):
 func init_death():
 	EventBus.emit_signal("boss_died")
 	queue_free()
+
+func clean_up():
+	set_physics_process(false)
+	queue_free()
+ 

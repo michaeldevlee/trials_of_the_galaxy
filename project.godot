@@ -130,6 +130,9 @@ _global_script_class_icons={
 
 config/name="Trials of the Galaxy"
 run/main_scene="res://UI/StartMenu.tscn"
+boot_splash/image="res://Build/pixil-frame-0.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.772549, 0.772549, 0.772549, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -139,6 +142,7 @@ EventManager="*res://Systems/EventSystem/EventManager/EventManager.tscn"
 Debug="*res://Debug/Debug.tscn"
 SceneTransitionManager="*res://Systems/EventSystem/TestEvents/SceneTransitionEvent/SceneTransitionManager.tscn"
 EventBus="*res://Systems/EventSystem/EventBus.gd"
+GameState="*res://GameState.gd"
 
 [display]
 

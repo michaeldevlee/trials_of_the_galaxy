@@ -249,7 +249,7 @@ font_data = ExtResource( 7 )
 [sub_resource type="Theme" id=13]
 default_font = SubResource( 12 )
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" groups=["main"]]
 script = ExtResource( 6 )
 
 [node name="Debug" parent="." instance=ExtResource( 3 )]
